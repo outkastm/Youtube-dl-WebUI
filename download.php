@@ -19,7 +19,7 @@ define('ALLOWED_REFERRER', '');
 
 // Download folder, i.e. folder where you keep all files for download.
 // MUST end with slash (i.e. "/" )
-define('BASE_DIR','/raiddata/1/Media1/YouTube/');
+define('BASE_DIR','/raid/data/downloads/YouTube/');
 
 // log downloads?  true/false
 define('LOG_DOWNLOADS',true);
@@ -60,7 +60,8 @@ $allowed_ext = array (
   'mpg' => 'video/mpeg',
   'mpe' => 'video/mpeg',
   'mov' => 'video/quicktime',
-  'avi' => 'video/x-msvideo'
+  'avi' => 'video/x-msvideo',
+  'webm' => 'video/mpeg'
 );
 
 

@@ -46,7 +46,7 @@
 						<th style="min-width:800px; height:35px">Title</th>
 						<th style="min-width:80px">Size</th>
 						<th style="min-width:80px">Play</th>
-						<th style="min-width:80px">download</th>
+						<th style="min-width:80px">Download</th>
 						<th style="min-width:110px">Delete link</th>
 					</tr>
 				</thead>
@@ -58,10 +58,10 @@
 				foreach($files as $f)
 				{
 					echo "<tr>";
-					echo "<td><a href=\download.php?f=".$f["name"].">".$f["name"]."</a></td>";
+					echo "<td>".$f["name"]."</td>";
 					echo "<td>".$f["size"]."</td>";
-					echo "<td><a href=\play.php?f=".$f["name"].">Play</a></td>";
-					echo "<td>".$f["size"]."</td>";
+					echo "<td><a href=\play.php?f=".$f["name"]." class=\"btn btn-danger btn-sm\">Play</a></td>";
+					echo "<td><a href=\download.php?f=".$f["name"]." class=\"btn btn-danger btn-sm\">Download</a></td>";
 					echo "<td><a href=\"./list.php?delete=$i&type=$t\" class=\"btn btn-danger btn-sm\">Delete</a></td>";
 					echo "</tr>";
 					$i++;

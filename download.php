@@ -1,5 +1,17 @@
 <?php
 
+	require_once 'class/Session.php';
+	require_once 'class/Downloader.php';
+	require_once 'class/FileHandler.php';
+
+	$session = Session::getInstance();
+	$file = new FileHandler;
+	
+		if(!$session->is_logged_in())
+	{
+		header("Location: login.php");
+	}
+
 ###############################################################
 # File Download 1.31
 ###############################################################
@@ -19,7 +31,7 @@ define('ALLOWED_REFERRER', '');
 
 // Download folder, i.e. folder where you keep all files for download.
 // MUST end with slash (i.e. "/" )
-define('BASE_DIR','/raid/data/downloads/YouTube/');
+define('BASE_DIR',$file->get_downloads_folder());
 
 // log downloads?  true/false
 define('LOG_DOWNLOADS',true);
@@ -32,24 +44,6 @@ define('LOG_FILE','downloads.log');
 // itself, which would only work if you have Mimetype or Fileinfo extensions
 // installed on server.
 $allowed_ext = array (
-
-  // archives
-  'zip' => 'application/zip',
-
-  // documents
-  'pdf' => 'application/pdf',
-  'doc' => 'application/msword',
-  'xls' => 'application/vnd.ms-excel',
-  'ppt' => 'application/vnd.ms-powerpoint',
-  
-  // executables
-  'exe' => 'application/octet-stream',
-
-  // images
-  'gif' => 'image/gif',
-  'png' => 'image/png',
-  'jpg' => 'image/jpeg',
-  'jpeg' => 'image/jpeg',
 
   // audio
   'mp3' => 'audio/mpeg',

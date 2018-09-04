@@ -1,5 +1,17 @@
 <?php
 
+	require_once 'class/Session.php';
+	require_once 'class/Downloader.php';
+	require_once 'class/FileHandler.php';
+
+	$session = Session::getInstance();
+	$file = new FileHandler;
+	
+		if(!$session->is_logged_in())
+	{
+		header("Location: login.php");
+	}
+
 ###############################################################
 # File Download 1.31
 ###############################################################
@@ -19,37 +31,21 @@ define('ALLOWED_REFERRER', '');
 
 // Download folder, i.e. folder where you keep all files for download.
 // MUST end with slash (i.e. "/" )
-define('BASE_DIR','/raid/data/downloads/YouTube/');
 
-// log downloads?  true/false
-define('LOG_DOWNLOADS',true);
+//BASE_DIR = $file->get_downloads_folder();
+define('BASE_DIR',$file->get_downloads_folder());
+
+// log plays?  true/false
+define('LOG_PLAYS',true);
 
 // log file name
-define('LOG_FILE','downloads.log');
+define('LOG_FILE','plays.log');
 
 // Allowed extensions list in format 'extension' => 'mime type'
 // If myme type is set to empty string then script will try to detect mime type 
 // itself, which would only work if you have Mimetype or Fileinfo extensions
 // installed on server.
 $allowed_ext = array (
-
-  // archives
-  'zip' => 'application/zip',
-
-  // documents
-  'pdf' => 'application/pdf',
-  'doc' => 'application/msword',
-  'xls' => 'application/vnd.ms-excel',
-  'ppt' => 'application/vnd.ms-powerpoint',
-  
-  // executables
-  'exe' => 'application/octet-stream',
-
-  // images
-  'gif' => 'image/gif',
-  'png' => 'image/png',
-  'jpg' => 'image/jpeg',
-  'jpeg' => 'image/jpeg',
 
   // audio
   'mp3' => 'audio/mpeg',
@@ -178,8 +174,8 @@ readfile($file_path);
 
 
 
-// log downloads
-if (!LOG_DOWNLOADS) die();
+// log plays
+if (!LOG_PLAYS) die();
 
 $f = @fopen(LOG_FILE, 'a+');
 if ($f) {

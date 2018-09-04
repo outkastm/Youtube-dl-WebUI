@@ -53,6 +53,7 @@ $allowed_ext = array (
   'mpeg' => 'video/mpeg',
   'mpg' => 'video/mpeg',
   'mpe' => 'video/mpeg',
+  'mkv' => 'video/mpeg',
   'mov' => 'video/quicktime',
   'avi' => 'video/x-msvideo',
   'webm' => 'video/mpeg'
